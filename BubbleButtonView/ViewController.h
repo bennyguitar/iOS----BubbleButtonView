@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    // Array for holding the Bubble Buttons after creation
+    // -- that way you can animate/use them later
+    NSMutableArray *bubbleButtonArray;
+    
+    // View that holds bubble buttons
+    IBOutlet UIView *bubbleView;
+}
+
+// IBAction for demo purposes
+- (IBAction)addButtons:(id)sender;
 
 @end
