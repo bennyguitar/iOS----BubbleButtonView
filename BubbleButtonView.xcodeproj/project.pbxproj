@@ -20,6 +20,7 @@
 		C091A52316658488007FB94A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C091A52116658488007FB94A /* ViewController.xib */; };
 		C091A52A1665849E007FB94A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C091A5291665849E007FB94A /* QuartzCore.framework */; };
 		C091A52C16658C6D007FB94A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C091A52B16658C6D007FB94A /* README.md */; };
+		C091A53D1665C8D6007FB94A /* screenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = C091A53C1665C8D6007FB94A /* screenshot.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		C091A52216658488007FB94A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
 		C091A5291665849E007FB94A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C091A52B16658C6D007FB94A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		C091A53C1665C8D6007FB94A /* screenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screenshot.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				C091A52B16658C6D007FB94A /* README.md */,
+				C091A53C1665C8D6007FB94A /* screenshot.png */,
 				C091A50E16658488007FB94A /* BubbleButtonView-Info.plist */,
 				C091A50F16658488007FB94A /* InfoPlist.strings */,
 				C091A51216658488007FB94A /* main.m */,
@@ -171,6 +174,7 @@
 				C091A51D16658488007FB94A /* Default-568h@2x.png in Resources */,
 				C091A52316658488007FB94A /* ViewController.xib in Resources */,
 				C091A52C16658C6D007FB94A /* README.md in Resources */,
+				C091A53D1665C8D6007FB94A /* screenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,7 @@
     // -- Ideally, you'd have a class variable so that whatever scheme
     //    your data is in, you can use and manipulate it with this array.
     // -- These strings will serve as my bubble buttons
-    NSArray *bubbleStringArray = @[@"hello", @"this", @"is", @"a", @"test", @"of", @"the", @"BubbleButtonView", @"class"];
+    NSArray *bubbleStringArray = @[@"hello", @"this", @"is", @"a", @"test", @"of", @"the", @"BubbleButtonView", @"class", @"Each", @"one", @"of", @"these", @"is", @"a", @"button"];
     
     // Create colors for buttons
     UIColor *textColor = [UIColor darkGrayColor];
