@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+
+// Note that I'm importing QuartzCore - Don't forget it!
 #import <QuartzCore/QuartzCore.h>
 
 @interface ViewController : UIViewController {

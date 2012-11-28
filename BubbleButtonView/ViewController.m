@@ -24,8 +24,28 @@
     
     // Init bubbleButtonArray
     bubbleButtonArray = [@[] mutableCopy];
-    
 }
+
+
+
+#pragma mark - IBAction for DEMO
+
+- (IBAction)addButtons:(id)sender {
+    // I'm just creating an array for demo purposes here.
+    // -- Ideally, you'd have a class variable so that whatever scheme
+    //    your data is in, you can use and manipulate it with this array.
+    // -- These strings will serve as my bubble buttons
+    NSArray *bubbleStringArray = @[@"hello", @"this", @"is", @"a", @"test", @"of", @"the", @"BubbleButtonView", @"class"];
+    
+    // Create colors for buttons
+    UIColor *textColor = [UIColor darkGrayColor];
+    UIColor *bgColor = [UIColor whiteColor];
+    
+    // Now make them sucka's.
+    [self fillBubbleViewWithButtons:bubbleStringArray bgColor:bgColor textColor:textColor fontSize:14];
+}
+
+
 
 #pragma mark - Bubble Button Methods
 
@@ -93,7 +113,7 @@
     
     // Sequentially animate the buttons appearing in view
     // -- This is the interval between each button animating, not overall span
-    // -- I recommend 0.034 for an aesthetic, smooth transition
+    // -- I recommend 0.034 for an nice, smooth transition
     [self addBubbleButtonsWithInterval:0.034];
 }
 
@@ -149,21 +169,6 @@
     [self removeBubbleButtonsWithInterval:0.034];
 }
 
-
-#pragma mark - IBAction for DEMO
-
-- (IBAction)addButtons:(id)sender {
-    // I'm just creating an array for demo purposes here.
-    // -- These will serve as my bubble buttons
-    NSArray *bubbleStringArray = @[@"hello", @"this", @"is", @"a", @"test", @"of", @"the", @"BubbleButtonView", @"class"];
-    
-    // Create colors for buttons
-    UIColor *textColor = [UIColor darkGrayColor];
-    UIColor *bgColor = [UIColor whiteColor];
-    
-    // Now make them sucka's.
-    [self fillBubbleViewWithButtons:bubbleStringArray bgColor:bgColor textColor:textColor fontSize:14];
-}
 
 
 #pragma mark - Memory Management
