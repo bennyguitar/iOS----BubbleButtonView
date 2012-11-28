@@ -3,6 +3,7 @@ BubbleButtonView
 
 Dynamically fill a UIView with rounded-corner UIButtons based off of an array of strings. This class also sequentially animates the adding and removing of buttons for a nice UI touch.
 
+![ScreenShot](https://raw.github.com/bennyguitar/iOS----BubbleButtonView/master/BubbleButtonView/screenshot.png)
 
 
 Code
