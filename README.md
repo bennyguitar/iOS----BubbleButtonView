@@ -15,7 +15,7 @@ All of this code is executed inside the ViewController, so extra subclasses or c
 Reap What I Sow!
 ================
 
-Please use this and twist it in whatever fashion you wish - and recommend any cool changes to help the code.
+This project is distributed under the standard MIT License. Please use this and twist it in whatever fashion you wish - and recommend any cool changes to help the code.
 
 
 For the Future
