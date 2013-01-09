@@ -22,8 +22,14 @@
 {
     [super viewDidLoad];
     
-    // Init bubbleButtonArray
-    bubbleButtonArray = [@[] mutableCopy];
+    // A little UI Touch
+    mainButton.layer.cornerRadius = 10;
+    bubbleView.layer.shadowColor = [[UIColor blackColor] CGColor];
+    bubbleView.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
+    bubbleView.layer.shadowRadius = 5.0f;
+    bubbleView.layer.shadowOpacity = 0.35f;
+    UIBezierPath *path = [UIBezierPath bezierPathWithRect:bubbleView.bounds];
+    bubbleView.layer.shadowPath = [path CGPath];
 }
 
 
@@ -35,142 +41,14 @@
     // -- Ideally, you'd have a class variable so that whatever scheme
     //    your data is in, you can use and manipulate it with this array.
     // -- These strings will serve as my bubble buttons
-    NSArray *bubbleStringArray = @[@"hello", @"this", @"is", @"a", @"test", @"of", @"the", @"BubbleButtonView", @"class", @"Each", @"one", @"of", @"these", @"is", @"a", @"button"];
+    NSArray *bubbleStringArray = @[@"Hello", @"this", @"is", @"a", @"test", @"of", @"the", @"BubbleButtonView", @"class", @"Each", @"one", @"of", @"these", @"is", @"a", @"button"];
     
     // Create colors for buttons
-    UIColor *textColor = [UIColor darkGrayColor];
-    UIColor *bgColor = [UIColor whiteColor];
+    UIColor *textColor = [UIColor colorWithRed:255/255.0 green:47/255.0 blue:51/255.0 alpha:1.0];
+    UIColor *bgColor = [UIColor colorWithRed:254/255.0 green:255/255.0 blue:235/255.0 alpha:1.0];
     
     // Now make them sucka's.
-    [self fillBubbleViewWithButtons:bubbleStringArray bgColor:bgColor textColor:textColor fontSize:14];
-}
-
-
-
-#pragma mark - Bubble Button Methods
-
--(void)fillBubbleViewWithButtons:(NSArray *)strings bgColor:(UIColor *)bgColor textColor:(UIColor *)textColor fontSize:(float)fsize {
-    
-    // First check to see if there are already buttons there. If there aren't any
-    // subviews to bubbleView, then add these buttons.
-    
-    if (bubbleView.subviews.count == 0) {
-        
-        // Create padding between sides of view and each button
-        //  -- I recommend 10 for aesthetically pleasing results at a 14 fontSize
-        int pad = 10;
-        
-        // Iterate over every string in the array to create the Bubble Button
-        for (int xx = 0; xx < strings.count; xx++) {
-            
-            // Find the size of the button, turn it into a rect
-            NSString *bub = [strings objectAtIndex:xx];
-            CGSize bSize = [bub sizeWithFont:[UIFont systemFontOfSize:fsize] constrainedToSize:CGSizeMake(MAXFLOAT, MAXFLOAT) lineBreakMode:NSLineBreakByWordWrapping];
-            CGRect buttonRect = CGRectMake(pad, pad, bSize.width + fsize, bSize.height + fsize/2);
-            
-            
-            // if new button will fit on screen, in row:
-            //   - place it
-            // else:
-            //   - put on next row at beginning
-            if (xx > 0) {
-                UIButton *oldButton = [[bubbleView subviews] objectAtIndex:bubbleView.subviews.count - 1];
-                if ((oldButton.frame.origin.x + (2*pad) + oldButton.frame.size.width + bSize.width + fsize) > bubbleView.frame.size.width) {
-                    buttonRect = CGRectMake(pad, oldButton.frame.origin.y + oldButton.frame.size.height + pad, bSize.width + fsize, bSize.height + fsize/2);
-                }
-                else {
-                    buttonRect = CGRectMake(oldButton.frame.origin.x + pad + oldButton.frame.size.width, oldButton.frame.origin.y, bSize.width + fsize, bSize.height + fsize/2);
-                }
-            }
-            
-            
-            // Create button and make magic with the UI
-            // -- Set the alpha to 0, cause we're gonna' animate them at the end
-            UIButton *bButton = [[UIButton alloc] initWithFrame:buttonRect];
-            [bButton setTitle:bub forState:UIControlStateNormal];
-            [bButton.titleLabel setFont:[UIFont systemFontOfSize:fsize]];
-            bButton.titleLabel.textColor = textColor;
-            bButton.backgroundColor = bgColor;
-            bButton.layer.cornerRadius = (3*fsize/4);
-            bButton.alpha = 0;
-            
-            // Give it some data and a target
-            bButton.tag = xx;
-            [bButton addTarget:self action:@selector(didClickBubbleButton:) forControlEvents:UIControlEventTouchUpInside];
-            
-            // And finally add a shadow
-            bButton.layer.shadowColor = [[UIColor blackColor] CGColor];
-            bButton.layer.shadowOffset = CGSizeMake(0.0f, 2.5f);
-            bButton.layer.shadowRadius = 5.0f;
-            bButton.layer.shadowOpacity = 0.35f;
-            UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:bButton.bounds cornerRadius:(3*fsize/4)];
-            bButton.layer.shadowPath = [path CGPath];
-            
-            // Add to the view, and to the array
-            [bubbleView addSubview:bButton];
-            [bubbleButtonArray addObject:bButton];
-            
-            // Peace.
-            [bButton release];
-        }
-        
-        // Sequentially animate the buttons appearing in view
-        // -- This is the interval between each button animating, not overall span
-        // -- I recommend 0.034 for an nice, smooth transition
-        [self addBubbleButtonsWithInterval:0.034];
-    }
-}
-
-
-
--(void)addBubbleButtonsWithInterval:(float)ftime {
-    // Make sure there are buttons to animate
-    // Take the first button in the array, animate alpha to 1
-    // Remove button from array
-    // Recur. Lather, rinse, repeat until all are buttons are on screen
-    
-    if (bubbleButtonArray.count > 0) {
-        UIButton *button = [bubbleButtonArray objectAtIndex:0];
-        [UIView animateWithDuration:ftime animations:^{
-            button.alpha = 1;
-        } completion:^(BOOL fin){
-            [bubbleButtonArray removeObjectAtIndex:0];
-            [self addBubbleButtonsWithInterval:ftime];
-        }];
-    }
-}
-
-
-
--(void)removeBubbleButtonsWithInterval:(float)ftime {
-    // Make sure there are buttons on screen to animate
-    // Take the last button on screen, animate alpha to 0
-    // Remove button from superview
-    // Recur. Lather, rinse, repeat until all buttons are off screen
-    
-    if (bubbleView.subviews.count > 0){
-        UIButton *button = [bubbleView.subviews objectAtIndex:bubbleView.subviews.count - 1];
-        [UIView animateWithDuration:ftime animations:^{
-            button.alpha = 0;
-        } completion:^(BOOL fin){
-            if (bubbleView.subviews.count > 0) {
-                [[bubbleView.subviews objectAtIndex:bubbleView.subviews.count - 1] removeFromSuperview];
-                [self removeBubbleButtonsWithInterval:ftime];
-            }
-        }];
-    }
-}
-
-
-
--(void)didClickBubbleButton:(UIButton *)bubble {
-    // Do something here
-    // Use bubble.tag to access your data
-    // -- or bubble.titleLabel.text to access the string
-    // -- etc.
-    
-    // Removing all buttons for demo purposes
-    [self removeBubbleButtonsWithInterval:0.034];
+    [bubbleView fillBubbleViewWithButtons:bubbleStringArray bgColor:bgColor textColor:textColor fontSize:14];
 }
 
 
@@ -183,9 +61,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [bubbleView release];
-    [super dealloc];
-}
 
 @end

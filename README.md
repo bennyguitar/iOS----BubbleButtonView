@@ -1,24 +1,24 @@
 BubbleButtonView
 ================
 
-Dynamically fill a UIView with rounded-corner UIButtons based off of an array of strings. This class also sequentially animates the adding and removing of buttons for a nice UI touch.
+Dynamically fill a subclassed UIView with rounded-corner UIButtons based off of an array of strings. This class also sequentially animates the adding and removing of buttons for a nice UI touch.
 
-![ScreenShot](https://raw.github.com/bennyguitar/iOS----BubbleButtonView/master/BubbleButtonView/screenshot.png)
+![ScreenShot](https://raw.github.com/bennyguitar/iOS----BubbleButtonView/master/BubbleButtonView/screenshot-01.png)
 
 
 Code
 ================
 
-All of this code is executed inside the ViewController, so extra subclasses or categories are unnecessary. All you need is a mutable array and a UIView to display the buttons in. There are four methods that do all of the work here. One creates the buttons, one animates their addition to the view, one animates their removal, and one serves as a data manipulation method for clicking on said button. Make sure you add the QuartzCore framework, then #import it into your ViewController.h
+The meat of the code is executed inside BBView.m and BBView.h, so import the header file and make sure to add the QuartzCore framework and import that as well. The BubbleButtonView works by feeding it an array of NSStrings - each one becomes a separate UIButton. I tried to make this fairly dynamic, so you also pass in the background/text colors of each button and the size of the text inside as arguments whenever you want to create them. Below is the code you would call.
+
+```shell
+[bubbleView fillBubbleViewWithButtons:NSArray bgColor:UIColor textColor:UIColor fontSize:float];
+```
+
+BBView also has three more functions: two for animating the addition/removal of buttons and one for the TouchUpInside data handling (each button receives a tag based on the original array you feed it).
 
 
 Reap What I Sow!
 ================
 
-Please use this and twist it in whatever fashion you wish - and recommend any cool changes to help the code.
-
-
-For the Future
-================
-
-Right now this is non-ARC, so I will make an ARC version soon as well.
+This project and all code is under the standard MIT License. Please use this and twist it in whatever fashion you wish - and recommend any cool changes to help the code.

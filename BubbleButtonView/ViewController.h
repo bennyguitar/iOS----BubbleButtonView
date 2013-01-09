@@ -7,17 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-// Note that I'm importing QuartzCore - Don't forget it!
-#import <QuartzCore/QuartzCore.h>
+#import <QuartzCore/QuartzCore.h> // Don't forget QuartzCore
+#import "BBView.h"
 
 @interface ViewController : UIViewController {
-    // Array for holding the Bubble Buttons after creation
-    // -- that way you can animate/use them later
-    NSMutableArray *bubbleButtonArray;
-    
     // View that holds bubble buttons
-    IBOutlet UIView *bubbleView;
+    __weak IBOutlet BBView *bubbleView;
+    
+    // Main Button
+    __weak IBOutlet UIButton *mainButton;
 }
 
 // IBAction for demo purposes
