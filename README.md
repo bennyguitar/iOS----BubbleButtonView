@@ -17,7 +17,7 @@ Make sure to <code>#import BBView.h</code> into whatever ViewController you want
 
 BBView works by taking an array of NSStrings and creating a UIButton for each one. The buttons are systematically added to the View such that they will fit on the line next to the last one, or if it won't fit, added on a new line. Because BBView's animations work via subviews (each UIButton is a subview of BBView), you should make BBView the lowest level possible - don't add more UI elements to BBView. Keep it simple.
 
-Begin by making a new UIView in your ViewController.xib, and changing it's class to BBView (through the identity inspector in the right bar). Drag this over to your ViewController.h to connect it up. In your .h
+Begin by making a new UIView in your ViewController.xib, and changing its class to BBView (through the identity inspector in the right bar). Drag this over to your ViewController.h to connect it up. In your .h
 
 ```shell
 @interface ViewController : UIViewController {
