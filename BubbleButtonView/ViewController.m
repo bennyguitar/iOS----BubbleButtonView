@@ -22,6 +22,9 @@
 {
     [super viewDidLoad];
     
+    // Make sure you set bubbleView's delegate
+    bubbleView.delegate = self;
+    
     // A little UI Touch
     mainButton.layer.cornerRadius = 10;
     bubbleView.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -51,6 +54,17 @@
     [bubbleView fillBubbleViewWithButtons:bubbleStringArray bgColor:bgColor textColor:textColor fontSize:14];
 }
 
+
+#pragma mark - BubbleButton Delegate
+-(void)didClickBubbleButton:(UIButton *)bubble {
+    // Do something here
+    // Use bubble.tag to use your data in the array
+    // -- or bubble.titleLabel.text to access the string
+    // -- etc.
+    
+    // Removing all buttons for demo purposes
+    [bubbleView removeBubbleButtonsWithInterval:0.034];
+}
 
 
 #pragma mark - Memory Management

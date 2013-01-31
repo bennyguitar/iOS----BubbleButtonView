@@ -25,13 +25,15 @@ Begin by making a new UIView in your ViewController.xib, and changing its class 
 }
 ```
 
+Add the BBDelegate to your ViewController, and make sure you set bubbleView's delegate to self.
+
 Now, to fill the BBView with your buttons, first create an NSArray of NSStrings. Ideally, this would tie into data you wish to manipulate - this part is entierly dependent on your project and what you wish to do. BBView also has arguments for the background color, text color and font-size for each button. This is for UI and again, entirely up to you. This is the function you should call inside your ViewController:
 
 ```shell
 [bubbleView fillBubbleViewWithButtons:NSArray bgColor:UIColor textColor:UIColor fontSize:float];
 ```
 
-Each UIButton is given a tag based on the index of the array you pass in. Use the <code>-(void)didClickBubbleButton:(UIButton *)bubble;</code> method inside <code>BBView.m</code> to manipulate your data. Use <code>bubble.tag</code> to do so.
+Each UIButton is given a tag based on the index of the array you pass in. Use the <code>-(void)didClickBubbleButton:(UIButton *)bubble;</code> method from the BBDelegate to manipulate your data. Use <code>bubble.tag</code> to do so.
 
 
 Reap What I Sow!

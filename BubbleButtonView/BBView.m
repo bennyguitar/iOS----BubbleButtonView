@@ -9,7 +9,10 @@
 #import "BBView.h"
 #import <QuartzCore/QuartzCore.h>
 
+
+
 @implementation BBView
+@synthesize delegate;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -72,7 +75,7 @@
             
             // Give it some data and a target
             bButton.tag = xx;
-            [bButton addTarget:self action:@selector(didClickBubbleButton:) forControlEvents:UIControlEventTouchUpInside];
+            [bButton addTarget:self action:@selector(clickedBubbleButton:) forControlEvents:UIControlEventTouchUpInside];
             
             // And finally add a shadow
             bButton.layer.shadowColor = [[UIColor blackColor] CGColor];
@@ -138,23 +141,9 @@
 
 
 
--(void)didClickBubbleButton:(UIButton *)bubble {
-    // Do something here
-    // Use bubble.tag to access your data
-    // -- or bubble.titleLabel.text to access the string
-    // -- etc.
-    
-    // Removing all buttons for demo purposes
-    [self removeBubbleButtonsWithInterval:0.034];
+-(void)clickedBubbleButton:(UIButton *)bubble {
+    [delegate didClickBubbleButton:bubble];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 @end

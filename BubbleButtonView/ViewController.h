@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h> // Don't forget QuartzCore
 #import "BBView.h"
 
-@interface ViewController : UIViewController {
+@interface ViewController : UIViewController <BBDelegate> {
     // View that holds bubble buttons
     __weak IBOutlet BBView *bubbleView;
     
