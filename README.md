@@ -19,7 +19,7 @@ BBView works by taking an array of NSStrings and creating a UIButton for each on
 
 Begin by making a new UIView in your ViewController.xib, and changing its class to BBView (through the identity inspector in the right bar). Drag this over to your ViewController.h to connect it up. In your .h
 
-```shell
+```objc
 @interface ViewController : UIViewController <BBDelegate> {
   __weak IBOutlet BBView *bubbleView;
 }
@@ -29,7 +29,7 @@ Notice we added the BBDelegate to your ViewController, and make sure you set bub
 
 Now, to fill the BBView with your buttons, first create an NSArray of NSStrings. Ideally, this would tie into data you wish to manipulate - this part is entierly dependent on your project and what you wish to do. BBView also has arguments for the background color, text color and font-size for each button. This is for UI and again, entirely up to you. This is the function you should call inside your ViewController:
 
-```shell
+```objc
 [bubbleView fillBubbleViewWithButtons:NSArray bgColor:UIColor textColor:UIColor fontSize:float];
 ```
 
